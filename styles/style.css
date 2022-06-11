@@ -4,10 +4,21 @@
     font-family: 'Permanent Marker', cursive;
 }
 
-#score {
-    margin-top: 20px;
+#coracao{
+    margin-top: 50px;
+    display: none;
     font-size: 30px;
     font-weight: 800;
+}
+.timer{
+    width: 15vw;
+    background-color: rgb(20, 33, 44);
+    border-radius:25px;
+    display: flex;
+    font-size : 2em; 
+    color: #15ddc2;
+    justify-content: center;
+    margin: 5px;
 }
 
 body {

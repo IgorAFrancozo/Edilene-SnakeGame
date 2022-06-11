@@ -7,17 +7,18 @@
 #coracao{
     margin-top: 50px;
     display: none;
-    font-size: 30px;
-    font-weight: 800;
+
 }
-.timer{
+#timer{
+    margin-top: 15px;
     width: 15vw;
     background-color: rgb(20, 33, 44);
     border-radius:25px;
     display: flex;
-    font-size : 2em; 
+    font-size : 1.5em; 
     color: #15ddc2;
     justify-content: center;
+    align-items: center;
     margin: 5px;
 }
 

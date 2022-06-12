@@ -4,9 +4,11 @@ let quadrado = 32;
 let snake = [];
 let vidasX;
 let tela;
+let quantidadeComida = 0;
 let vidasQtd = 5;
 let tempo = 160;
 var mostra = document.querySelector(".timer");
+
 
 // Array cobrinha
 snake[0] = {
@@ -145,11 +147,10 @@ function criarObst10() {
   context.fillStyle = "purple";
   context.fillRect(obst10.x, obst10.y, quadrado, quadrado);
 }
-
 // desenha o obstáculo //
 
-document.addEventListener("keydown", update);
 
+document.addEventListener("keydown", update);
 // quando um evento acontece, detecta e chama uma função //
 
 function update(event) {
@@ -202,19 +203,24 @@ function startGame() {
   if (snakeX != comida.x || snakeY != comida.y) {
     snake.pop(); // pop tira o último elemento da lista
   } else {
-    vidasQtd += 1;
+    quantidadeComida += 1;
     tempo += 16;
     comida.x = Math.floor(Math.random() * 15 + 1) * quadrado;
     comida.y = Math.floor(Math.random() * 15 + 1) * quadrado;
   }
 
-  //================== IF OBSTACULOS =====================//
+  if (quantidadeComida == 3){ // Vida adicional após comer 3 maças
+    quantidadeComida = 0; // quantidadeComida volta a zero para continuar entrando nesta condição
+    vidasQtd = vidasQtd + 1;
+  }
 
-  if (snake.length >= 15) {
+  
+  if (snake.length >= 15) { // Condição vitória
     alert("vitória ! :)");
     document.location.reload(alert);
   }
-
+  
+  //================== OBSTACULOS =====================//
   if (snakeX == obst.x && snakeY == obst.y) {
     vidasQtd -= 1;
     obst.x = Math.floor(Math.random() * 15 + 1) * quadrado;
@@ -257,11 +263,11 @@ function startGame() {
     obst10.y = Math.floor(Math.random() * 15 + 1) * quadrado;
   }
 
-  if (vidasQtd <= 0) {
+  if (vidasQtd <= 0) { // game over pelo tempo
     alert("Game Over :(");
     document.location.reload(alert);
   }
-  if (vidasQtd > 5) {
+  if (vidasQtd > 5) { // Não deixa vida ser maior que 5
     vidasQtd = 5;
   }
   //-------------------------------------------------------------------------//
